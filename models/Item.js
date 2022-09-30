@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const { ObjectId } = moongose.Schema;
 
-const itemSchema = new mongoose.Schema{(
+const itemSchema = new mongoose.Schema({
     title:{
         type: String,
         required: true
@@ -19,9 +19,10 @@ const itemSchema = new mongoose.Schema{(
     city:{
         type:String,
         required:true
-    }
+    },
     isPopular:{
-        type:Bolean
+        type:Boolean,
+        default:false
     },
     description:{
         type:String,
@@ -40,6 +41,6 @@ const itemSchema = new mongoose.Schema{(
         ref: 'Activity'
     }]
     
-)};
+});
 
 module.exports = mongoose.model('Item', itemSchema);

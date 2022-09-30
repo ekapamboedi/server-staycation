@@ -1,18 +1,41 @@
 <div class="tab-pane fade" id="add-item" role="tabpanel" aria-labelledby="profile-tab">
-          <h5 class="card-title">Add Bank</h5>
-    <form action="/admin/bank" method="POST" enctype="multipart/form-data">
+  <div class="card-shadow mb-4 mt-2">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weihgt-bold text-primary">Item</h6>
+  </div>
+    <div class="card-body">
+    <!-- <h5 class="card-title">Add Bank</h5> -->
+    <form action="/admin/item" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
-                  <label for="bankName">Bank Name</label>
-                  <input type="text" class="form-control" id="" name="bankName" placeholder="Enter Bank Name" required>
-                  
-                  <label for="bankNumber">Bank Number</label>
-                  <input type="text" class="form-control" id="" name="bankNumber" placeholder="Enter Bank Number" required>
-                  
-                  <label for="name">Name</label>
-                  <input type="text" class="form-control" id="" name="name" placeholder="Enter Name" required>
+                  <label for="title">Title</label>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="" name="title" placeholder="Enter Title" required>
+                </div>
+                <div class="form-group">
+                  <label for="price">Price</label>
+                  <input type="number" class="form-control" id="" name="price" placeholder="Enter Price" required>
+                </div>
+                  <div class="form-group">
+                    <label for="city">City </label>
+                    <input type="text" class="form-control" id="" name="city" required>
+                  </div>
+                <div class="form-group">
+                  <label for="category">Category</label>
+                  <select name="categoryId" id="" class="form-control">
+                      <option value="">----------Category----------</option>
+                      <option value="">Looping Ambil dari database</option>
+                  </select>
+                </div>
 
-                  <label for="imageUrl">Bank Image </label>
-                  <input type="file" class="form-control" id="" name="image" required>
+                <div class="form-group">
+                  <label for="image">Image</label>
+                  <input type="file" name="image" class="form-control" id="" multiple required>
+                </div>
+
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  <textarea name="about" class="form-control about"></textarea>
                 </div>
                 
                 <div class="modal-footer">
@@ -20,4 +43,6 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
             </div>
+          </div>
+        </div>
 </div>
