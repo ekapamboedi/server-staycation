@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+        
+<!-- Header -->
+<head>
+    <%- include('../../partials/header.ejs') %>
+    <!-- Custom styles for this page -->
+    <link href="../../sb-admin-2/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+</head>
+<!--End of Header -->
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- #Sidebar# -->
+        <%- include('../../partials/sidebar.ejs') %>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- #Main Content# -->
+            <div id="content">
+                
+                <!-- #Navbar# -->
+                <%- include('../../partials/navbar.ejs') %> 
+
+                <div class="container-fluid">
+                    <% if(alert.message != ""){ %> 
+                        <div class="alert alert-<%= alert.status %>" role="alert">
+                            <%= alert.message %>
+                        </div>
+                    <% } %>
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+                        For more information about DataTables, please visit the <a target="_blank"
+                            href="https://datatables.net">official DataTables documentation</a>.</p>
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary py-3">DataTables Example</h6>
+                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#BankModal">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                
+                                <%- include('tables_bank.ejs') %>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- #Footer#-->
+            <%- include('../../partials/footer.ejs') %>
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+  
+    <!-- Add modal -->
+    <%- include('add_bank.ejs') %>
+    <!-- Edit Modal -->
+    <%- include('edit_bank.ejs') %>
+    <!-- #JS partials#-->
+    <%- include('../../partials/js.ejs') %>
+
+</body>
+<script>
+    $('#dataTable').on('click', '.button-update', function(){
+        let id_bank = $(this).data('bank_id');
+        let name_cus = $(this).data('name_cus');
+        // Dom dari class data-"" html gk bisa sama sama query dri db
+        let bank_Name = $(this).data('name_bank');
+        let bank_Number = $(this).data('number_bank');
+        $('#editBankModal').modal('show');
+        $('.id').val(id_bank);
+        $('.name').val(name_cus);
+        $('.bankName').val(bank_Name);
+        $('.bankNumber').val(bank_Number);
+    });
+</script>
+</html>
