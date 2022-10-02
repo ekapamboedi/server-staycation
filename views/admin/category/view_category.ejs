@@ -85,11 +85,11 @@
         $('#dataTable').on('click', '.button-update', function(){
             let id = $(this).data('id');
             let name = $(this).data('name');
-            console.log(id + name);            
+            // console.log(id + name);            
             $('#EditCategoryModal').modal('show');
             //namipilin modal via javascript
             $('.id').val(id);
             $('.name').val(name);
-        })
+        });
     </script>
 </html>

@@ -24,7 +24,10 @@
                   <label for="category">Category</label>
                   <select name="categoryId" id="" class="form-control">
                       <option value="">----------Category----------</option>
-                      <option value="">Looping Ambil dari database</option>
+                          <% for(let i=0; i< category.length; i++){ %>
+                            <option value="<%= category[i].id %>"><%= category[i].name %></option>
+                          <% } %>
+                        <option value="">Test</option>
                   </select>
                 </div>
 

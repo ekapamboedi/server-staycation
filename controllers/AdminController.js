@@ -2,6 +2,7 @@ const Category = require('../models/Category');
 const Bank = require('../models/Bank');
 const fs = require('fs-extra');
 const path = require('path');
+const { cache } = require('ejs');
 //note semua module sudah terexport jadi cukup melakukan sekali export saja(?)
 
 module.exports = {
@@ -114,12 +115,12 @@ module.exports = {
     }, 
     editBank: async(req, res)=>{
         try{
-            const{id, name, bankName, bankNumber }= req.body;
-            const bank = await Bank.findOne({_id: id});
+            const{ id, name, bankName, bankNumber } = req.body;
+            const bank = await Bank.findOne({ _id: id });
             if(req.file == undefined){
-                bank.name = name;
                 bank.bankName = bankName;
                 bank.bankNumber = bankNumber;
+                bank.name = name;
                 await bank.save();
                 req.flash('alertMessage', 'Success Update Bank');
                 req.flash('alertStatus', 'success');
@@ -135,7 +136,6 @@ module.exports = {
                 res.redirect('/admin/bank');
             }
         }catch(error){
-            console.log(error);            
             req.flash('alertMessage', `${error.message}`);
             req.flash('alertStatus', 'danger');
             res.redirect('/admin/bank');   
@@ -163,11 +163,19 @@ module.exports = {
     //     this._addBank = value;
     // },
     
-    viewItem :(req, res)=>{
-        res.render('admin/item/view_item',
-       { title: "Staycation | Dashboard"
-    });
-
+    viewItem :async (req, res) => {
+        try{
+            const category = await Category.find();
+            res.render('admin/item/view_item', {
+                title :"Staycation | Item",
+                category
+            });
+            console.log(category);
+        }catch(error){
+            req.flash('alertMessage', `${error.message}`);
+            req.flash('alertStatus', 'danger');
+            res.redirect('/admin/item/');      
+        }
     },
     //Booking
     viewBooking :(req, res)=>{

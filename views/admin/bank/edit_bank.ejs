@@ -10,18 +10,18 @@
         </div>
         <div class="modal-body">
           
-          <form action="/admin/bank?_method=PUT" method="POST" enctype="multipart/form-data">
-            <!-- <input class="id" name="id" type="text"> -->
+          <form action="/admin/bank?_method=PUT" method="post" enctype="multipart/form-data">
+            <input type="text" class="_id" name="id">
             <div class="modal-body">
               <div class="form-group">
                 <label for="bankName">Bank Name</label>
-                <input type="text" class="form-control bankName" id="" name="bankName" placeholder="Enter Bank Name" required>
+                <input type="text" class="form-control bank_Name" id="" name="bankName" placeholder="Enter Bank Name" required>
                 
                 <label for="bankNumber">Bank Number</label>
-                <input type="text" class="form-control bankNumber" id="" name="bankNumber" placeholder="Enter Bank Number" required>
+                <input type="text"  class="form-control bank_Number" id="" name="bankNumber" placeholder="Enter Bank Number" required>
                 
                 <label for="name">Name</label>
-                <input type="text" class="form-control name" id="" name="name" placeholder="Enter Name" required>
+                <input type="text" class="form-control _name" id="" name="name" placeholder="Enter Name" required>
 
                 <label for="imageUrl">Bank Image </label>
                 <input type="file" class="form-control" id="" name="image">
@@ -32,11 +32,12 @@
               
             </div>
             <div class="modal-footer">
-              <input type="text" class="id" name="id">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <!-- <button type="submit" class="btn btn-primary" id="check">Submit</button> -->
               </div>
             </form>
       </div>
     </div>
   </div>
+  

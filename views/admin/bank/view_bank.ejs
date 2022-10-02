@@ -80,17 +80,21 @@
 
 </body>
 <script>
+    // let Variabel itu buat nampung data yang ditarik dari db lewat jquery
+    // $(this).data('') is for retrive data from html class
+    //$('') buat  naro ke tag html balik
     $('#dataTable').on('click', '.button-update', function(){
-        let id_bank = $(this).data('bank_id');
-        let name_cus = $(this).data('name_cus');
+        let id = $(this).data('bank_id');
+        let name = $(this).data('name_cus');
         // Dom dari class data-"" html gk bisa sama sama query dri db
-        let bank_Name = $(this).data('name_bank');
-        let bank_Number = $(this).data('number_bank');
+        let bankName = $(this).data('name_bank');
+        let bankNumber = $(this).data('number_bank');
+        console.log(id + name + bankName + bankNumber);            
         $('#editBankModal').modal('show');
-        $('.id').val(id_bank);
-        $('.name').val(name_cus);
-        $('.bankName').val(bank_Name);
-        $('.bankNumber').val(bank_Number);
+        $('._id').val(id);
+        $('._name').val(name);
+        $('.bank_Name').val(bankName);
+        $('.bank_Number').val(bankNumber);
     });
 </script>
 </html>
