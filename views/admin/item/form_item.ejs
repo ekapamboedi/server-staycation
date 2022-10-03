@@ -5,12 +5,12 @@
   </div>
     <div class="card-body">
     <!-- <h5 class="card-title">Add Bank</h5> -->
-    <form action="/admin/item" method="POST" enctype="multipart/form-data">
+    <form action="/admin/item" method="POST" onsubmit="//sConsole(event)" enctype="multipart/form-data">
                 <div class="form-group">
                   <label for="title">Title</label>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" id="" name="title" placeholder="Enter Title" required>
+                  <input type="text" class="form-control" id="title" name="title" placeholder="Enter Title" required>
                 </div>
                 <div class="form-group">
                   <label for="price">Price</label>
@@ -22,7 +22,7 @@
                   </div>
                 <div class="form-group">
                   <label for="category">Category</label>
-                  <select name="categoryId" id="" class="form-control">
+                  <select name="categoryId" id="categoryId" class="form-control">
                       <option value="">----------Category----------</option>
                           <% for(let i=0; i< category.length; i++){ %>
                             <option value="<%= category[i].id %>"><%= category[i].name %></option>

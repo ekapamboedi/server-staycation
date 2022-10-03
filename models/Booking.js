@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const { ObjectId } = moongose.Schema;
 
-const bookingSchema = new mongoose.Schema{(
+const bookingSchema = new mongoose.Schema({
     bookingStartDate:{
         type: Date,
         required: true
@@ -38,10 +38,10 @@ const bookingSchema = new mongoose.Schema{(
         required:true
     }],
     bankId:[{
-        type: Object,
+        type: ObjectId,
         ref: 'Bank',
         required: true
     }]
-)};
+});
 
 module.exports = mongoose.model('Booking', bookingSchema);

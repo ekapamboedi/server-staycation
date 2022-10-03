@@ -181,6 +181,7 @@ module.exports = {
     
     viewItem :async (req, res) => {
         try{
+            const item = await Item.find().push
             const category = await Category.find();
             const alertMessage = req.flash('alertMessage');
             const alertStatus = req.flash('alertStatus');
@@ -202,8 +203,13 @@ module.exports = {
             // ini buat nerima data dari form
             const{categoryId, title, price, city, about} = req.body;
             
+
             if(req.files.length > 0 ){
-                const category = await Category.findOne({_id: categoryId});
+                const category = await Category.findOne({ _id: categoryId}
+                    // , function (doc){
+                    //     console.log(doc);
+                    // }
+                    );
                 const newItem = {
                     categoryId : category._id,
                     title,
@@ -211,13 +217,12 @@ module.exports = {
                     price,
                     city
                 }
-
                 const item = await Item.create(newItem);
                 category.itemId.push({_id: item._id});
                 await category.save();
                 for(let i = 0; i < req.files.length; i++){
-                    const imageSave = await Image.create({imageUrl: `images/${req.files.filename}` });
-                    item.imageId.push({_id: imageSave._id});
+                    const imageSave = await Image.create({imageUrl: `images/${req.files[i].filename}` });
+                    item.imageId.push({ _id: imageSave._id });
                     await item.save();
                 }
                 req.flash('alertMessage', 'Success Add Item');

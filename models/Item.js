@@ -39,6 +39,10 @@ const itemSchema = new mongoose.Schema({
     activityId:[{
         type: ObjectId,
         ref: 'Activity'
+    }],
+    categoryId:[{
+        type: ObjectId,
+        ref: 'Category'
     }]
     
 });
