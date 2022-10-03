@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const memberSchema = new mongoose.Schema{(
+const memberSchema = new mongoose.Schema({
     firstName:{
         type: String,
         required: true
@@ -18,6 +18,6 @@ const memberSchema = new mongoose.Schema{(
         required:true
     }
 
-)};
+});
 
 module.exports = mongoose.model('Member', memberSchema);

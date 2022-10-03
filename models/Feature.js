@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const featureSchema = new mongoose.Schema{(
+const featureSchema = new mongoose.Schema({
     name:{
         type: String,
         required: true
@@ -13,6 +13,6 @@ const featureSchema = new mongoose.Schema{(
         type: String,
         required: true
     }
-)};
+});
 
 module.exports = mongoose.model('Feature', featureSchema);
