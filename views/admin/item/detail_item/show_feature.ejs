@@ -1,0 +1,41 @@
+<div class="tab-pane fade show active" id="show-feature" role="tabpanel" aria-labelledby="feature-tab">
+    <div class="card-shadow mb-4 mt-2">
+<div class="card-body">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="form-group">
+             <form action="/admin/bank" method="POST" enctype="multipart/form-data">
+                  <label for="name">Name</label>
+                  <input type="text" class="form-control" id="" name="name" placeholder="Enter Feature Name" required>
+                  
+                  <label for="qty">Quantity</label>
+                  <input type="number" class="form-control" id="" name="qty" placeholder="Enter Quantity" required>
+             
+                  <label for="imageUrl">Bank Image </label>
+                  <input type="file" class="form-control" id="" name="image" required>
+                  <div class="modal-footer">
+                </div>        
+                    <button type="submit" class="btn btn-primary">Submit</button>
+             </form>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Image</th>
+                    <th>Action</th>
+                    </tr>
+                </thead>
+            <tbody>
+              
+            </tbody>
+            </table>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>

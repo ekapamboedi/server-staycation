@@ -12,6 +12,10 @@ const featureSchema = new mongoose.Schema({
     imageUrl:{
         type: String,
         required: true
+    },
+    itemId:{
+        type:ObjectId,
+        ref: Item
     }
 });
 

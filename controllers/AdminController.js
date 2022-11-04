@@ -334,8 +334,12 @@ module.exports = {
     viewDetailItem : async(req, res)=>{
         try{
             const { itemId } = req.params;
-            res.render('admin/item/detail_item/view_detail_item'{
-                title: 'Staycation | Detail Item' 
+            const alertMessage = req.flash('alertMessage');
+            const alertStatus = req.flash('alertStatus');
+            const alert = {message: alertMessage, status:alertStatus};
+            res.render('admin/item/detail_item/view_detail_item',{
+                title: 'Staycation | Detail Item',
+                alert
 
             })
 
@@ -345,7 +349,7 @@ module.exports = {
             req.flash('alertStatus', 'danger');
             res.redirect(`/admin/item/show-detail-item/${itemId}`);
         }
-    }
+    },
     //Booking
     viewBooking :(req, res)=>{
         res.render('admin/booking/view_booking');

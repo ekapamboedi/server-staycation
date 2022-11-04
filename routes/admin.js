@@ -15,12 +15,15 @@ router.post('/bank', upload, AdminController.addBank);
 router.put('/bank', upload, AdminController.editBank);
 router.delete('/bank/:id', AdminController.deleteBank);
 
-
+//Endpoint Item
 router.get('/item', AdminController.viewItem);
 router.post('/item', uploadMultiple, AdminController.addItem);
 router.get('/item/show-image/:id', AdminController.showImageItem);
 router.get('/item/:id', AdminController.showEditItem);
 router.put('/item/:id', uploadMultiple, AdminController.editItem);
+// Endpoint detail item
+router.get('/item/show-detail-item/:itemId', AdminController.viewDetailItem);
+
 
 router.get('/booking', AdminController.viewBooking);
 
