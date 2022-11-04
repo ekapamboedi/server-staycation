@@ -66,13 +66,27 @@
     <!-- End of Page Wrapper -->
 
      <!-- #JS partials#-->
+    <%- include('modal_edit_feature.ejs') -%>
     <%- include('../../../partials/js.ejs') -%>
 
 </body>
 <script>
+    //  2nd table for activity
     $(document).ready(function(){
         $('#dataTableActivity').DataTable();
-    })
+    });
+    // modal Edit Feature
+    $('#dataTable').on('click', '.button-update', function(){
+        let id = $(this).data('id');
+        let name = $(this).data('name');
+        // Dom dari class data-"" html gk bisa sama sama query dri db
+        let quantity = $(this).data('quantity');
+        console.log(id + name + quantity );            
+        $('#ModalEditFeature').modal('show');
+        $('.id').val(id);
+        $('.name').val(name);
+        $('.quantity').val(quantity);
+    });
     CKEDITOR.replace( 'about' );
 //     function sConsole(event) {
 //   event.preventDefault();

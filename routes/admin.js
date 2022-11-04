@@ -24,6 +24,7 @@ router.put('/item/:id', uploadMultiple, AdminController.editItem);
 // Endpoint detail item
 router.get('/item/show-detail-item/:itemId', AdminController.viewDetailItem);
 router.post('/item/add/feature', upload, AdminController.addFeature);
+router.put('/item/update/feature', upload, AdminController.editFeature);
 
 
 router.get('/booking', AdminController.viewBooking);
