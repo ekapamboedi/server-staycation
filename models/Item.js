@@ -32,7 +32,7 @@ const itemSchema = new mongoose.Schema({
         type: ObjectId,
         ref : 'Image'
     }],
-    feutureId:[{
+    featureId:[{
         type: ObjectId,
         ref: 'Feature'
     }],
