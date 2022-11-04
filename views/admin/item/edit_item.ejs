@@ -1,0 +1,53 @@
+<div class="tab-pane fade show active" id="edit-item" role="tabpanel" aria-labelledby="profile-tab">
+<div class="card">
+
+    <div class="card-shadow mb-4 mt-2">
+      <div class="card-body">
+      <!-- <h5 class="card-title">Add Bank</h5> -->
+      <form action="/admin/item/<%= item.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+                  <div class="form-group">
+                    <label for="title">Title</label>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="title" name="title" value="<%= item.title %>" placeholder="Enter Title" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="number" class="form-control" id="price" name="price" value="<%= item.price %>"  placeholder="Enter Price" required>
+                  </div>
+                    <div class="form-group">
+                      <label for="city">City </label>
+                      <input type="text" value="<%= item.city %>"  class="form-control" id="city" name="city" required>
+                    </div>
+                    <div class="form-group">
+                    <label for="category">Category</label>
+                    <select  class="form-control" name="categoryId" id="categoryId"> 
+                        <option value="<%=  item.categoryId[0]._id %>">
+                          <%=  item.categoryId[0].name %></option>
+                            <% for(let i=0; i< category.length; i++){ %>
+                        <option value="<%= category[i].id %>">
+                            <%= category[i].name %>
+                        </option>
+                            <% } %>
+                    </select>
+                  </div>
+  
+                  <div class="form-group">
+                    <label for="image">Image</label>
+                    <input type="file"  name="image" class="form-control" id="" multiple>
+                  </div>
+  
+                  <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea name="about"value="" class="form-control about"><%= item.description %></textarea>
+                  </div>
+                  
+                  <div class="modal-footer">
+                      <a href="/admin/item/" type="button" class="btn btn-secondary" data-dismiss="modal">Back</a>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>

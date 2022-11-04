@@ -1,14 +1,15 @@
+<div class="card">
 <div class="tab-pane fade show active" id="show-image" role="tabpanel" aria-labelledby="home-tab">
-    <div class="card-shadow mb-4 mt-2">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weihgt-bold text-primary" > Data Tables</h6>
-        </div>
+      <div class="card-shadow mb-4 mt-2">
         <div class="card-body">
-         <h1>INI Image</h1>
+         <!-- <h1>INI Image</h1> -->
          <% for(let x= 0; x < item.imageId.length; x++){ %>
-            <img src="http://localhost:3000/public/<%= item.imageId[x].imageUrl _%>" alt="Image" style="width:100%; display:Block;">
+            <img src="http://localhost:3000/<%= item.imageId[x].imageUrl _%>" alt="Image" 
+                 style="width:400px; height: 300px; padding: 10px; display:Block;">
          <% } %>
         </div>
     </div>
+    <a type="button" style="margin:1em;" class="btn btn-warning" href="/admin/item">Back</a>
+</div>
 </div>
 

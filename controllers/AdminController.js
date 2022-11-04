@@ -178,7 +178,7 @@ module.exports = {
             const item = await Item.find()
             .populate({path:'imageId', select:'id imageUrl'})
             .populate({path:'categoryId', select:'id name' });
-            // console.log(item.imageId);
+            // console.log(item);
 
             const category = await Category.find();
             const alertMessage = req.flash('alertMessage');
@@ -205,20 +205,16 @@ module.exports = {
             
 
             if(req.files.length > 0 ){
-                const category = await Category.findOne({ _id: categoryId}
-                    // , function (doc){
-                    //     console.log(doc);
-                    // }
-                    );
+                const category = await Category.findOne({ _id: categoryId});
                 const newItem = {
                     categoryId : category._id,
                     title,
-                    description:about,
+                    description: about,
                     price,
                     city
                 }
                 const item = await Item.create(newItem);
-                category.itemId.push({_id: item._id});
+                category.itemId.push({ _id: item._id});
                 await category.save();
                 for(let i = 0; i < req.files.length; i++){
                     const imageSave = await Image.create({imageUrl: `images/${req.files[i].filename}` });
@@ -260,6 +256,96 @@ module.exports = {
     }
 
     },
+
+    showEditItem: async(req, res) => {
+        // we gonna calling from form becouse its refresing page
+        // if we use DOM object then we need to set on ejs file with DOM jequery
+        try{
+            const{ id } = req.params;
+            const item = await Item.findOne({_id: id})
+            .populate({ path:'imageId', select:'id imageUrl'})
+            .populate({ path:'categoryId', select:'id name'});
+            const category = await Category.find();
+            const alertMessage = req.flash('alertMessage');
+            const alertStatus = req.flash('alertStatus');
+            const alert = {message: alertMessage, status:alertStatus};
+            res.render('admin/item/view_item', {
+                title :"Staycation | Edit Item",
+                item,
+                category,
+                alert,
+                action:'EditItem'
+            });
+    }catch(error){
+        // console.log(error);
+        req.flash('alertMessage', `${error.message}`);
+        req.flash('alertStatus', 'danger');
+        res.redirect('/admin/item/');      
+    }
+
+    },
+    editItem: async(req, res)=>{
+        try{
+            const{id} = req.params;
+            const{ categoryId, title, price, city, about } = req.body;
+            const item = await Item.findOne({ _id: id})
+            .populate({ path:'imageId', select:'id imageUrl'})
+            .populate({ path:'categoryId', select:'id name'});
+
+        if(req.files.length > 0){
+            for(let i = 0; i < item.imageId.length; i++){
+                const imageUpdate = await Image.findOne({_id:item.imageId[i].id});
+                await fs.unlink(path.join(`public/${imageUpdate.imageUrl}`));
+                // imageUpdate.imageUrl = `images/${req.files[i].filename}`;
+                imageUpdate.imageUrl = `images/${req.files[i].filename}`;
+                await imageUpdate.save();
+            }
+            item.title = title;
+            item.price = price;
+            item.city = city;
+            item.description = about;
+            item.categoryId = categoryId;
+            await item.save();
+            // console.log( item.categoryId);
+            req.flash('alertMessage', 'Success Update Item');
+            req.flash('alertStatus', 'success');
+            res.redirect('/admin/item');
+        }else{
+            item.title = title;
+            item.price = price;
+            item.city = city;
+            item.description = about;
+            item.categoryId = categoryId;
+            await item.save();
+            // console.log( item.categoryId);
+            req.flash('alertMessage', 'Success Update Item');
+            req.flash('alertStatus', 'success');
+            res.redirect('/admin/item');
+         }
+        }catch(error){
+        // console.log(error);
+        req.flash('alertMessage', `${error.message}`);
+        req.flash('alertStatus', 'danger');
+        res.redirect('/admin/item/');
+        }
+
+    },
+
+    viewDetailItem : async(req, res)=>{
+        try{
+            const { itemId } = req.params;
+            res.render('admin/item/detail_item/view_detail_item'{
+                title: 'Staycation | Detail Item' 
+
+            })
+
+        }catch(error){
+            // console.log(error);
+            req.flash('alertMessage', `${error.message}`);
+            req.flash('alertStatus', 'danger');
+            res.redirect(`/admin/item/show-detail-item/${itemId}`);
+        }
+    }
     //Booking
     viewBooking :(req, res)=>{
         res.render('admin/booking/view_booking');

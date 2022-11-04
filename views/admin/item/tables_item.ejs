@@ -1,8 +1,5 @@
 <div class="tab-pane fade show active" id="show-item" role="tabpanel" aria-labelledby="home-tab">
     <div class="card-shadow mb-4 mt-2">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weihgt-bold text-primary" > Data Tables</h6>
-        </div>
 <div class="card-body">
     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
@@ -27,9 +24,8 @@
             <form action="/admin/item/<%= item[i].id %>?_method=DELETE" method="POST">
                 <a href="" class="btn btn-success btn-circle btn-sm images" id="images" ><i class="fas fa-plus"></i></a>
                 <a href="/admin/item/show-image/<%= item[i].id %>"  class="btn btn-info btn-circle btn-sm" ><i class="fas fa-image"></i></a>
-                <a href="javascript:void();" 
-                        type="button"  
-                        class="btn btn-warning btn-circle btn-sm button-update" 
+                <a href="/admin/item/<%= item[i].id %>"   
+                        class="btn btn-warning btn-circle btn-sm">
                         <i class="fas fa-edit"></i></a>
                     <button type="submit" class="btn btn-danger btn-circle btn-sm button-delete" ><i class="fas fa-trash"></i></button>            
                         </form>
