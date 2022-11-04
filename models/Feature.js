@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Schema;
 
 const featureSchema = new mongoose.Schema({
     name:{
@@ -6,7 +7,7 @@ const featureSchema = new mongoose.Schema({
         required: true
     },
     qty:{
-        type: Nummber,
+        type: Number,
         required: true,
     },
     imageUrl:{
@@ -14,8 +15,8 @@ const featureSchema = new mongoose.Schema({
         required: true
     },
     itemId:{
-        type:ObjectId,
-        ref: Item
+        type: ObjectId,
+        ref: 'Item'
     }
 });
 
