@@ -5,18 +5,23 @@
         <div class="col-md-5">
             <div class="form-group">
              <form action="/admin/item/add/feature" method="POST" enctype="multipart/form-data">
+                <div class="form-group">  
                   <label for="name">Name</label>
-                  <input type="text" class="form-control name" id="" name="name" placeholder="Enter Feature Name" required>
-                  
+                  <input type="text" class="form-control " id="" name="name" placeholder="Enter Feature Name" required>
+                </div>
+                <div class="form-group">  
                   <label for="qty">Quantity</label>
-                  <input type="number" class="form-control quantity" id="" name="qty" placeholder="Enter Quantity" required>
-             
+                  <input type="number" class="form-control " id="" name="qty" placeholder="Enter Quantity" required>
+                </div>
+                  <div class="form-group">
                   <label for="imageUrl">feature Image </label>
                   <input type="file" class="form-control" id="" name="image" max="1" required>
-                  <div class="modal-footer">
                 </div>
+                
+                <div class="modal-footer">
                     <input type="hidden" value="<%= itemId %>" name="itemId" id=""> 
                     <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
              </form>
             </div>
         </div>
@@ -44,9 +49,9 @@
                         <td><a href="javascript:void();" 
                                 type="button"  
                                 class="btn btn-warning btn-circle btn-sm button-update" 
-                                data-id="<%= feature[i].id %>" 
-                                data-name="<%= feature[i].name %>" 
-                                data-quantity="<%= feature[i].qty %>">
+                                data-feature_id="<%= feature[i].id %>" 
+                                data-feature_name="<%= feature[i].name %>" 
+                                data-feature_quantity="<%= feature[i].qty %>">
                                 <i class="fas fa-edit"></i></a>
                             <button type="submit" class="btn btn-danger btn-circle btn-sm button-delete" ><i class="fas fa-trash"></i></button>
                         </form>

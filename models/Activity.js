@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Schema;
 
-const featureSchema = new mongoose.Schema({
+const activitySchema = new mongoose.Schema({
     name:{
         type: String,
         required: true
@@ -13,9 +14,13 @@ const featureSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    itemId:{
+        type: ObjectId,
+        ref: 'Item'
+    },
     isPopular:{
         type: Boolean
     }
 });
 
-module.exports = mongoose.model('Feature', featureSchema);
+module.exports = mongoose.model('Activity', activitySchema);

@@ -67,6 +67,7 @@
 
      <!-- #JS partials#-->
     <%- include('modal_edit_feature.ejs') -%>
+    <%- include('modal_edit_activity.ejs') -%>
     <%- include('../../../partials/js.ejs') -%>
 
 </body>
@@ -75,17 +76,31 @@
     $(document).ready(function(){
         $('#dataTableActivity').DataTable();
     });
+
     // modal Edit Feature
     $('#dataTable').on('click', '.button-update', function(){
-        let id = $(this).data('id');
-        let name = $(this).data('name');
+        let id = $(this).data('feature_id');
+        let name = $(this).data('feature_name');
         // Dom dari class data-"" html gk bisa sama sama query dri db
-        let quantity = $(this).data('quantity');
-        console.log(id + name + quantity );            
+        let quantity = $(this).data('feature_quantity');
+        // console.log(id + name + quantity );            
         $('#ModalEditFeature').modal('show');
         $('.id').val(id);
         $('.name').val(name);
         $('.quantity').val(quantity);
+    });
+
+    // modal Edit Activity
+    $('#dataTableActivity').on('click', '.button-update', function(){
+        let id = $(this).data('id');
+        let name = $(this).data('name');
+        //Dom dari class data-"" html gk bisa sama sama query dri db
+        let type = $(this).data('type');
+        console.log(id + name + type );      
+        $('#ModalEditActivity').modal('show');
+        $('.id').val(id);
+        $('.name').val(name);
+        $('.type').val(type);
     });
     CKEDITOR.replace( 'about' );
 //     function sConsole(event) {

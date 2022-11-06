@@ -28,6 +28,10 @@ router.post('/item/add/feature', upload, AdminController.addFeature);
 router.put('/item/update/feature', upload, AdminController.editFeature);
 router.delete('/item/:itemId/feature/:id', AdminController.deleteFeature);
 
+// Endpoint Activity
+router.post('/item/add/activity', upload, AdminController.addActivity);
+router.put('/item/update/activity', upload, AdminController.editActivity);
+router.delete('/item/:itemId/activity/:id', AdminController.deleteActivity);
 
 
 router.get('/booking', AdminController.viewBooking);
