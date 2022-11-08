@@ -18,7 +18,7 @@ mongoose.connect('mongodb://localhost:27017/db_mern')
   useNewUrlParser:true,  
   UseUnifiedTopology:true,
   useCreateIndex:true,
-  useFindAndModify:false,
+  useFindAndModify:true,
 };
 
 var indexRouter = require('./routes/index');
@@ -51,8 +51,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/sb-admin-2',express.static(path.join(__dirname, 'node_modules/startbootstrap-sb-admin-2')));
 
 
+// app.use('/users', usersRouter);
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 // router Admin
 app.use('/admin', adminRouter);
 
