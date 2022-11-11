@@ -4,19 +4,71 @@ const Item = require('../models/Item');
 const Image = require('../models/Image');
 const Feature = require('../models/Feature');
 const Activity = require('../models/Activity');
+const User = require('../models/User');
 const fs = require('fs-extra');
 const path = require('path');
 const { cache } = require('ejs');
 const { create } = require('../models/Category');
 const { title } = require('process');
 const { about_app } = require('moongose/models');
+// const { bcrypt } = require('bcryptjs');
+const bcrypt = require('bcryptjs');
 //note semua module sudah terexport jadi cukup melakukan sekali export saja(?)
 
 module.exports = {
     //Dashboard
+    viewLogin : async(req,res)=>{
+        try{
+            const alertMessage = req.flash('alertMessage');
+            const alertStatus = req.flash('alertStatus');
+            const alert = {message: alertMessage, status:alertStatus};
+            if(req.session.user == null || req.session.user == undefined){
+                res.render('index', {
+                    alert,
+                    title :"Staycation | Login",
+                });
+            }else{
+                return res.redirect('/admin/dashboard');
+            }            
+        }catch(error){
+             res.redirect('/admin/login');
+        }
+    },
+    actionLogin : async(req,res)=>{
+        try{
+            const {username, password} = req.body;
+            const user = await User.findOne({ username: username});
+        if(!user){
+                req.flash('alertMessage', 'User yang Anda Masukan Tidak Ada');
+                req.flash('alertStatus', 'danger');
+                return res.redirect('/admin/login');
+           }
+           const isPasswordMatch = await bcrypt.compare( password, user.password);
+        if(!isPasswordMatch){
+                req.flash('alertMessage', 'Password yang Anda Masukan Salah!');
+                req.flash('alertStatus', 'danger');
+                 return res.redirect('/admin/login');
+            }
+        req.session.user = {
+            id: user.id,
+            username: user.username
+        }
+            
+        res.redirect('/admin/dashboard');
+
+        }catch(error){
+            // console.log(error);
+            res.redirect('/admin/login');
+        }
+    },
+    actionLogout : async(req,res)=>{
+        req.session.destroy();
+        res.redirect('/admin/login');
+    },
     viewDashboard : (req, res)=>{
-        res.render('admin/dashboard/view_dashboard',{
-            title: "Staycation | Dashboard"
+            res.render('admin/dashboard/view_dashboard',{
+                title: "Staycation | Dashboard",
+                user: req.session.user
         });
     },
     //Category
@@ -30,7 +82,9 @@ module.exports = {
          res.render('admin/category/view_category', {
             category, 
             alert,
-            title :"Staycation | Category"
+            title :"Staycation | Category",
+            user: req.session.user
+
         });
         }catch(error){
             res.redirect('/admin/category');            
@@ -98,6 +152,7 @@ module.exports = {
             res.render('admin/bank/view_bank', {
                 bank,
                 alert,
+                user: req.session.user,
                 title :"Staycation | Bank",
             });
         }catch(error){
@@ -159,7 +214,6 @@ module.exports = {
             res.redirect('/admin/bank');   
         }
     },
-
     deleteBank :async (req, res)=>{
         try{
             const{ id }= req.params;
@@ -191,7 +245,9 @@ module.exports = {
                 category,
                 item,
                 action: 'ViewItem',
-                alert
+                alert,
+                user: req.session.user
+
             });
         }catch(error){
             // console.log(error);
@@ -247,6 +303,7 @@ module.exports = {
             res.render('admin/item/view_item', {
             title :"Staycation | Show Image Item",
             item,
+            user: req.session.user,
             alert,
             action:'ShowImage'
         });
@@ -258,7 +315,6 @@ module.exports = {
     }
 
     },
-
     showEditItem: async(req, res) => {
         // we gonna calling from form becouse its refresing page
         // if we use DOM object then we need to set on ejs file with DOM jequery
@@ -276,6 +332,7 @@ module.exports = {
                 item,
                 category,
                 alert,
+                user: req.session.user,
                 action:'EditItem'
             });
     }catch(error){
@@ -332,7 +389,6 @@ module.exports = {
         }
 
     },
-
     viewDetailItem : async(req, res)=>{
         const { itemId } = req.params;
         console.log(itemId);
@@ -349,7 +405,8 @@ module.exports = {
                 alert,
                 itemId,
                 feature,
-                activity
+                activity,
+                user: req.session.user
             })
 
         }catch(error){
@@ -521,6 +578,7 @@ module.exports = {
     },
     //Booking
     viewBooking :(req, res)=>{
+        // user: req.session.user
         res.render('admin/booking/view_booking');
     }
 }
