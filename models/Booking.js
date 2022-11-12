@@ -60,11 +60,11 @@ const bookingSchema = new mongoose.Schema({
         ref : 'Member',
         required:true
     },
-    bankId:[{
+    bankId:{
         type: ObjectId,
         ref: 'Bank',
         required: true
-    }]
+    }
 });
 
 module.exports = mongoose.model('Booking', bookingSchema);

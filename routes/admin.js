@@ -40,5 +40,8 @@ router.delete('/item/:itemId/activity/:id', AdminController.deleteActivity);
 
 
 router.get('/booking', AdminController.viewBooking);
+router.get('/booking/:id', AdminController.showDetailBooking);
+router.put('/booking/:id/confirmation', AdminController.actionConfirm);
+router.put('/booking/:id/rejection', AdminController.actionReject);
 
 module.exports = router;
