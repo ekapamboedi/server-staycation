@@ -1,0 +1,95 @@
+{
+    "hero":{
+        "travellers": 1,
+        "treasures":8,
+        "cities" : 2
+    },
+    "mostPicked":[
+        {
+            "caountry" : "Indonesia",
+            "unit" : "Night",
+            "imageId" : [
+                {
+                    "_id":"",
+                    "imageUrl":"images/item-4.png"
+                },
+                {
+                    "_id":"",
+                    "imageUrl":"images/item-3.png"
+                },
+                {
+                    "_id":"",
+                    "imageUrl":"images/item-2.png"
+                }
+            ],
+            "_id" : "5e96cbe292b97300fc902222",
+            "title":"Tobby Town",
+            "city":"Lampung"
+        }
+    ],
+    "categories":[
+        {
+            "_id":"asd129uasdads1",
+            "name":"PSW Antasari",
+            "imageUrl": "/images/image-country-1.jpg",
+            "country": "South Korea",
+            "city" : "Seoul Flore",
+            "isPopular" : true
+        },
+        {
+            "_id":"asd129uasdads1",
+            "name":"KuretSeok",
+            "imageUrl": "/images/image-country-2.jpg",
+            "country": "South Korea",
+            "city" : "Seoul Flore",
+            "isPopular" : true
+        },
+        {
+            "_id":"asd129uasdads1",
+            "name":"Duta",
+            "imageUrl": "/images/image-country-3.jpg",
+            "country": "South Korea",
+            "city" : "Seoul Flore",
+            "isPopular" : true
+        },
+        {
+            "_id":"asd129uasdads1",
+            "name":"PSW Antasari",
+            "imageUrl": "/images/image-country-4.jpg",
+            "country": "South Korea",
+            "city" : "Seoul Flore",
+            "isPopular" : true
+        }
+    ],
+    "category":[
+        {
+        "itemId":[
+            {
+                "country" : "Indonesia",
+                "isPopular" : false,
+                "imageId" :[
+                    {
+                        "_id": "",
+                        "imagUrl": "images/item-4.png"
+                    }
+                ],
+                "_id":"",
+                "title" : "",
+                "city" : ""
+            }
+        ],
+            "_id":"",
+            "name":" "
+        },
+        {
+            "itemId":[],
+            "_id":"5e96cbe292b97300fc901111",
+            "name":"Apartment with kitchen"
+        },
+        {
+            "itemId":[],
+            "_id":"5e96cbe292b97300fc901113",
+            "name":"Hotels with large living room"
+        }
+    ]
+    }

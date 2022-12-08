@@ -23,7 +23,8 @@
                         <th>Member Name</th>
                         <th>Total</th>
                         <th>Bank</th>
-                        <th>Title</th
+                        <th>Title</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,8 +32,18 @@
                         <td><%= booking.memberId.firstName%> <%= booking.memberId.lastName %></td>
                         <td>$ <%= booking.total %></td>
                         <td><%= booking.payments.bankFrom %></td>
-                        <td><%= booking.itemId.title %></td>                            
-                        </tr>
+                        <td><%= booking.itemId.title %></td>
+                    <% if(booking.payments.status == 'Process'){ %> 
+                        <td> <span class="badge bg-warning" style="color: white ;">
+                            <%= booking.payments.status %> </span></td>                            
+                    <% }else if(booking.payments.status == 'Accepted'){%>
+                        <td> <span class="badge bg-success" style="color: white ;">
+                            <%= booking.payments.status %> </span></td>                            
+                    <% }else{%>
+                        <td> <span class="badge bg-danger" style="color: white ;">
+                            <%= booking.payments.status %> </span></td>                            
+                     <% } %>
+            </tr>
                         <!-- < } > -->
                 </tbody>
             </table>

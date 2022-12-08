@@ -18,8 +18,8 @@ const bookingSchema = new mongoose.Schema({
     itemId:{
         _id:{
             type:ObjectId,
-            required:true,
-            ref: "Item"
+            ref: "Item",
+            required:true
         },
         price:{
             type:Number,
@@ -42,7 +42,8 @@ const bookingSchema = new mongoose.Schema({
         proofPayment : {
             type:String,
             required:true
-        },bankFrom:{
+        },
+        bankFrom:{
             type:String,
             required:true
         },
@@ -52,18 +53,16 @@ const bookingSchema = new mongoose.Schema({
         },
         status:{
             type:String,
-            required:true
+            default:'Process'
         }
     },
     memberId:{
         type: ObjectId,
-        ref : 'Member',
-        required:true
+        ref : 'Member'
     },
     bankId:{
         type: ObjectId,
-        ref: 'Bank',
-        required: true
+        ref: 'Bank'
     }
 });
 

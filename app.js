@@ -26,7 +26,7 @@ var usersRouter = require('./routes/users');
 
 //router admin
 const adminRouter = require('./routes/admin');
-// const adminRouter = require('./routes/admin');
+const apiRouter = require('./routes/api');
 
 var app = express();
 // app.use(cors());
@@ -55,6 +55,9 @@ app.use('/sb-admin-2',express.static(path.join(__dirname, 'node_modules/startboo
 app.use('/', indexRouter);
 // router Admin
 app.use('/admin', adminRouter);
+// router Api version 1
+// app.use('/api/v1', apiRouter);
+app.use('/api/v1/member', apiRouter);
 
 
 // catch 404 and forward to error handler

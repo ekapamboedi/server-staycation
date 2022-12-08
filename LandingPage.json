@@ -1,0 +1,99 @@
+{
+"hero":{
+    "travellers": 80409,
+    "treasures":882,
+    "cities" : 1492
+},
+"mostPicked":[
+    {
+        "_id" : "5e96cbe292b97300fc902222",
+        "name" : "Andi",
+        "type" : "Apartment",
+        "imageUrl":"/images/images-mostpicked-2.png",
+        "caountry" : "Indonesia",
+        "city":"Lampung",
+        "price":"80",
+        "unit" : "Night"
+    },
+    {
+        "_id" : "5e96cbe292b97300fc902222",
+        "name" : "Andi 2",
+        "type" : "Apartment 2",
+        "imageUrl":"/images/images-mostpicked-3.png",
+        "caountry" : "Indonesia",
+        "city":"Lampung",
+        "price":"80",
+        "unit" : "Night"
+    },
+    {
+        "_id" : "5e96cbe292b97300fc902222",
+        "name" : "Andi 3",
+        "type" : "Apartment",
+        "imageUrl":"/images/images-mostpicked-4.png",
+        "caountry" : "Indonesia",
+        "city":"Lampung",
+        "price":"80",
+        "unit" : "Night"
+    },
+    {
+        "_id" : "5e96cbe292b97300fc902222",
+        "name" : "Andi 4",
+        "type" : "Apartment",
+        "imageUrl":"/images/images-mostpicked-2.png",
+        "caountry" : "Indonesia",
+        "city":"Lampung",
+        "price":"80",
+        "unit" : "Night"
+    }
+],
+"categories":[
+    {
+        "_id":"asd129uasdads1",
+        "name":"PSW Antasari",
+        "items":[
+            {
+                "_id" : "asd129uasdads1",
+                "name" : "PSW Antasari",
+                "imageUrl": "/images/image-country-1.jpg",
+                "country": "South Korea",
+                "city" : "Seoul Flore",
+                "isPopular" : true
+            },
+            {
+                "_id" : "asd129uasdads1",
+                "name" : "Arya Duta",
+                "imageUrl": "/images/image-country-2.jpg",
+                "country": "Indonesia",
+                "city" : "Bandung",
+                "isPopular" : false
+            },
+            {
+                "_id" : "asd129uasdads1",
+                "name" : "PEkansari",
+                "imageUrl": "/images/image-country-3.jpg",
+                "country": "South Korea",
+                "city" : "Seoul Flore",
+                "isPopular" : false
+            },
+            {
+                "_id" : "asd129uasdads1",
+                "name" : "Arya Duta",
+                "imageUrl": "/images/image-country-2.jpg",
+                "country": "Indonesia",
+                "city" : "Bandung",
+                "isPopular" : false
+            }
+        ]
+    }
+    
+],
+"testimonial":{
+    "_id":"asd129uasdads1",
+    "imageUrl": "/images/testimonial-landingpages.jpg",
+    "name" : "Happy Familly",
+    "rate" : 4.55,
+    "content" : "What a gret loremipsum...",
+    "famillyName" : "Budi",
+    "famillyOccuption": "Product Designer"
+}
+}
