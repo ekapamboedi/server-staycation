@@ -13,7 +13,16 @@ const flash = require('connect-flash');
 
 // import moongose
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/db_mern')
+// Local
+// mongoose.connect('mongodb://localhost:27017/db_mern')
+// ,{
+//   useNewUrlParser:true,  
+//   UseUnifiedTopology:true,
+//   useCreateIndex:true,
+//   useFindAndModify:true,
+// };
+
+mongoose.connect('mongodb+srv://admin_js:admin_js@cluster0.n9q51k5.mongodb.net/db_mern?retryWrites=true&w=majority')
 ,{
   useNewUrlParser:true,  
   UseUnifiedTopology:true,

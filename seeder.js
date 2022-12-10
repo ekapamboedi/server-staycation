@@ -1,8 +1,7 @@
 var seeder = require('mongoose-seed');
 var mongoose = require('mongoose');
-const db = "mongodb://127.0.0.1:27017/db_mern";
-
-
+// const db = "mongodb://127.0.0.1:27017/db_mern";
+const db = "mongodb+srv://admin_js:admin_js@cluster0.n9q51k5.mongodb.net/db_mern?retryWrites=true&w=majority";
 
 // Connect to MongoDB via Mongoose
 seeder.connect(db, 
