@@ -1,9 +1,7 @@
-import React, { Component } from 'react'
-import { BrowserRouter as Router } from 'react-router-dom';
-
+import React from 'react';
 // library buat pindah halaman, router dll, tpi cuma make link nya aja
-import { Link } from 'react-router-dom'
-import propTypes from 'prop-types'
+import { Link } from 'react-router-dom';
+import propTypes from 'prop-types';
 
 export default function Button(props) {
     const className = [props.className];
@@ -85,6 +83,5 @@ Button.propTypes = {
     isSmall: propTypes.bool,
     isLarge: propTypes.bool,
     isBlock: propTypes.bool,
-    isExternal: propTypes.bool,
     hasShadow: propTypes.bool,
 };

@@ -1,3 +1,10 @@
+/*!
+ * Bootstrap v4.6.2 (https://getbootstrap.com/)
+ * Copyright 2011-2022 The Bootstrap Authors
+ * Copyright 2011-2022 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
+
 @import "functions";
 @import "variables";
 @import "mixins";
@@ -35,35 +42,3 @@
 @import "spinners";
 @import "utilities";
 @import "print";
-
-.brand-text-icon {
-    font-size: 26px;
-    font-weight: 500;
-    font-family: "Poppins", sans-serif;
-    color: $primary;
-}
-
-header{
-    border-bottom: 1px solid $gray-200;
-    width: 100%;
-    position: relative;
-    
-    .navbar{
-        height: 80px;
-        
-        .navbar-nav{
-            li.nav-item{
-                a{
-                    &.nav-link{
-                        color: $gray-900;
-                        padding-left: 1rem;
-                        padding-right: 1rem;
-                        &:hover{
-                            text-decoration: underline;
-                        }   
-                    }
-                }
-            }
-        }
-    }
-}
